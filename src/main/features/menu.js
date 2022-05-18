@@ -4,20 +4,21 @@ const { showHotkeysDialog } = require("../dialogs/hotkeys");
 const navigation = require("./navigation");
 const { showLoader } = require("../index");
 const { traySettingsChanged } = require("./dockMenu");
+const { locales } = require("./locales");
 
 const menu = Menu.buildFromTemplate([
   {
     label: app.name,
     submenu: [
-      { role: "about", label: "About Yandex Music (Unofficial)" },
+      { role: "about", label: locales.menu.app.about },
       {
-        label: "Website",
+        label: locales.menu.app.website,
         click() {
           shell.openExternal("https://yandex-music.juvs.dev");
         },
       },
       {
-        label: "GitHub",
+        label: locales.menu.app.github,
         click() {
           shell.openExternal("https://github.com/juvirez/yandex-music-app");
         },
@@ -25,21 +26,21 @@ const menu = Menu.buildFromTemplate([
       { type: "separator" },
       { role: "services", submenu: [] },
       { type: "separator" },
-      { role: "hide", label: "Hide Yandex Music (Unofficial)" },
+      { role: "hide", label: locales.menu.app.hide },
       { role: "hideothers" },
       { role: "unhide" },
       { type: "separator" },
-      { role: "quit", label: "Quit Yandex Music (Unofficial)" },
+      { role: "quit", label: locales.menu.app.quit },
     ],
   },
   {
     role: "editMenu",
   },
   {
-    label: "View",
+    label: locales.menu.view.title,
     submenu: [
       {
-        label: "Reload",
+        label: locales.menu.view.reload,
         accelerator: "CommandOrControl+R",
         click() {
           showLoader();
@@ -52,15 +53,15 @@ const menu = Menu.buildFromTemplate([
     ],
   },
   {
-    label: "Navigate",
+    label: locales.menu.navigate.title,
     submenu: [
       {
-        label: "Back",
+        label: locales.menu.navigate.back,
         accelerator: "CommandOrControl+[",
         click: navigation.goBack,
       },
       {
-        label: "Forward",
+        label: locales.menu.navigate.forward,
         accelerator: "CommandOrControl+]",
         click: navigation.goForward,
       },
@@ -68,7 +69,7 @@ const menu = Menu.buildFromTemplate([
         type: "separator",
       },
       {
-        label: "Open URL",
+        label: locales.menu.navigate.open_url,
         accelerator: "CommandOrControl+O",
         click: showOpenURLDialog,
       },

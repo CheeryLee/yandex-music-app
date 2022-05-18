@@ -1,0 +1,48 @@
+{
+	"dockMenu": {
+		"like": "Like",
+		"dislike": "Dislike",
+		"play": "Play",
+		"next": "Next",
+		"previous": "Previous",
+		"now_playing": "Now playing",
+		"playlist": "Playlist",
+		"pause": "Pause",
+		"menu_bar_show": "Show in Menu Bar",
+		"liked": "Liked",
+		"disliked": "Disliked",
+		"quit": "Quit"
+	},
+	"menu": {
+		"app": {
+			"about": "About Yandex Music (Unofficial)",
+			"website": "Website",
+			"github": "GitHub",
+			"hide": "Hide",
+			"quit": "Quit"
+		},
+		"view": {
+			"title": "View",
+			"reload": "Reload"
+		},
+		"navigate": {
+			"title": "Navigate",
+			"back": "Back",
+			"forward": "Forward",
+			"open_url": "Open URL..."
+		}
+	},
+	"openURL": {
+		"placeholder": "Yandex Music URL"
+	},
+	"settings": {
+		"show_notifications": "Show notifications",
+		"show_menu_bar_icon": "Show menu bar icon",
+		"use_global_hotkeys": "Use global hotkeys",
+		"language": {
+			"title": "Language",
+			"ru": "Русский",
+			"en": "English"
+		}
+	}
+}

@@ -1,4 +1,5 @@
 const { BrowserWindow, clipboard, ipcMain } = require("electron");
+const { locales } = require("../features/locales");
 
 let win;
 
@@ -11,6 +12,8 @@ exports.showOpenURLDialog = () => {
 
   win = createWindow();
   win.once("ready-to-show", () => {
+    win.webContents.send("set-locales", locales);
+    
     let clipboardString = clipboard.readText("selection");
     if (clipboardString.startsWith("https://music.yandex.ru")) {
       win.webContents.send("url", clipboardString);
@@ -45,7 +48,7 @@ function createWindow() {
     show: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: false
     }
   });
   win.loadFile("src/renderer/openURL.html");

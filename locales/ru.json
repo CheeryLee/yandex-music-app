@@ -1,0 +1,48 @@
+{
+	"dockMenu": {
+		"like": "Нравится",
+		"dislike": "Не нравится",
+		"play": "Играть",
+		"next": "Следующий",
+		"previous": "Предыдущий",
+		"now_playing": "Сейчас играет",
+		"playlist": "Плейлист",
+		"pause": "Пауза",
+		"menu_bar_show": "Показать в меню",
+		"liked": "Понравилось",
+		"disliked": "Не понравилось",
+		"quit": "Выход"
+	},
+	"menu": {
+		"app": {
+			"about": "О программе",
+			"website": "Веб-сайт",
+			"github": "GitHub",
+			"hide": "Скрыть",
+			"quit": "Выйти"
+		},
+		"view": {
+			"title": "Вид",
+			"reload": "Перезагрузить"
+		},
+		"navigate": {
+			"title": "Переход",
+			"back": "Назад",
+			"forward": "Вперед",
+			"open_url": "Открыть ссылку..."
+		}
+	},
+	"openURL": {
+		"placeholder": "Ссылка на Яндекс Музыку"
+	},
+	"settings": {
+		"show_notifications": "Показывать уведомления",
+		"show_menu_bar_icon": "Показать иконку в меню",
+		"use_global_hotkeys": "Использовать глобальные сочетания клавиш",
+		"language": {
+			"title": "Язык",
+			"ru": "Русский",
+			"en": "English"
+		}
+	}
+}

@@ -6,7 +6,7 @@
   <body>
     <div style="padding: 24px;" class="typo-main theme-white">
       <div id="input-url-wrapper" class="d-input deco-input-wrapper d-input_size-L">
-        <input id="input-url" type="text" class="d-input__field deco-input" placeholder="Yandex Music URL">
+        <input id="input-url" type="text" class="d-input__field deco-input">
         <div class="d-input__tip deco-input__tip"></div>
       </div>
       <button id="navigate-button" class="d-button deco-button deco-button-action" type="button">
@@ -33,6 +33,10 @@
   ipc.on("url", (_event, url) => {
     inputURL.value = url;
     inputURL.select();
+  });
+
+  ipc.on("set-locales", (_event, locales) => {
+    inputURL.placeholder = locales.openURL.placeholder;
   });
 
   document.addEventListener("keydown", event => {

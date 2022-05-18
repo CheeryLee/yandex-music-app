@@ -1,32 +1,33 @@
 const { app, Menu, Tray, MenuItem, ipcMain } = require("electron");
 const { truncate } = require("../utils");
+const { locales } = require("./locales");
 
 let tray = null;
 const trackInfo = new MenuItem({ label: "  –", enabled: false });
 const like = new MenuItem({
-  label: "Love",
+  label: locales.dockMenu.like,
   type: "checkbox",
   enabled: false,
   click: () => playerCmd("toggleLike"),
 });
 const dislike = new MenuItem({
-  label: "Dislike",
+  label: locales.dockMenu.dislike,
   type: "checkbox",
   enabled: false,
   click: () => playerCmd("toggleDislike"),
 });
 const play = new MenuItem({
-  label: "Play",
+  label: locales.dockMenu.play,
   enabled: false,
   click: () => playerCmd("togglePause"),
 });
 const next = new MenuItem({
-  label: "Next",
+  label: locales.dockMenu.next,
   enabled: false,
   click: () => playerCmd("next"),
 });
 const previous = new MenuItem({
-  label: "Previous",
+  label: locales.dockMenu.previous,
   enabled: false,
   click: () => playerCmd("prev"),
 });
@@ -36,7 +37,7 @@ refreshMenu();
 
 function refreshMenu() {
   const menu = new Menu();
-  menu.append(new MenuItem({ label: "Now Playing", enabled: false }));
+  menu.append(new MenuItem({ label: locales.dockMenu.now_playing, enabled: false }));
   menu.append(trackInfo);
   menu.append(like);
   menu.append(dislike);
@@ -56,7 +57,7 @@ function refreshMenu() {
     menu.append(
       new MenuItem({
         type: "checkbox",
-        label: "Show song in Menu Bar",
+        label: locales.dockMenu.menu_bar_show,
         checked: global.store.get("tray-song", false),
         click(menuItem) {
           tray.showTitle = menuItem.checked;
@@ -66,7 +67,7 @@ function refreshMenu() {
       })
     );
     menu.append(new MenuItem({ type: "separator" }));
-    menu.append(new MenuItem({ role: "quit", label: "Quit" }));
+    menu.append(new MenuItem({ role: "quit", label: locales.dockMenu.quit }));
     tray.setContextMenu(menu);
 
     tray.setTitle((tray.showTitle && play.playing && trackInfo.label) || "");
@@ -91,7 +92,7 @@ ipcMain.on("changeControls", (_event, { currentTrack, controls }) => {
 });
 
 ipcMain.on("changeState", (_event, { isPlaying, currentTrack }) => {
-  play.label = isPlaying ? "Pause" : "Play";
+  play.label = isPlaying ? locales.dockMenu.pause : locales.dockMenu.play;
   play.playing = isPlaying;
   handleTrackChange(currentTrack);
 
@@ -137,9 +138,9 @@ function handleTrackChange(currentTrack) {
   if (hasCurrentTrack) {
     trackInfo.label = "  " + getLabelForTrack(currentTrack);
     like.checked = currentTrack.liked;
-    like.label = currentTrack.liked ? "Loved" : "Love";
+    like.label = currentTrack.liked ? locales.dockMenu.liked : locales.dockMenu.like;
     dislike.checked = currentTrack.disliked;
-    dislike.label = currentTrack.disliked ? "Disliked" : "Dislike";
+    dislike.label = currentTrack.disliked ? locales.dockMenu.disliked : locales.dockMenu.dislike;
   }
 
   like.enabled = hasCurrentTrack;
@@ -171,7 +172,7 @@ function createPlayListMenuItem(tracks, currentTrack) {
     );
   });
   return new MenuItem({
-    label: "Playlist",
+    label: locales.dockMenu.playlist,
     type: "submenu",
     enabled: tracks.length > 0,
     submenu: menu,
